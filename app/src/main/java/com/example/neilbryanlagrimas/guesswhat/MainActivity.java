@@ -1,24 +1,29 @@
 package com.example.neilbryanlagrimas.guesswhat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageView imageView;
     int number;
      Button btn;
-     TextView textView,View_array;
+     TextView textView;
      List<Database>list;
      List<Integer> random_array;
      Random r = new Random();
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         imageView = (ImageView) findViewById(R.id.imageView5);
         btn = (Button) findViewById(R.id.button);
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.Shuffle_word);
 
         Button_1 = (Button)findViewById(R.id.Button_1);
         Button_2 = (Button)findViewById(R.id.Button_2);
@@ -134,8 +139,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void Question(int total){
 
-        textView.setText(Integer.toString(total_score));
-
         list = new ArrayList<>();
 
         for (int i = 0; i < new Media().medias.length;i++){
@@ -157,5 +160,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button_2.setText(list.get(random_array.get(1)).getMedia());
         Button_3.setText(list.get(random_array.get(2)).getMedia());
         Button_4.setText(list.get(random_array.get(3)).getMedia());
+
+        String num = list.get(0).getMedia().toString();
+        List<String> al = new ArrayList<String>(Arrays.asList(num.split("")));
+        al.remove(0);
+        Collections.shuffle(al);
+
+
+        textView.setText("Output : "+al);
+
+        LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.button_container);
+        Button button = new Button(MainActivity.this);
+        /*
+        for (int i=0;i < 2;i++){
+
+            button.setText(al.get(i).toString());
+            buttonContainer.addView(button);
+
+        }
+        */
+
+        button.setText(al.get(1).toString());
+        buttonContainer.addView(button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Next_Page.class));
+            }
+        });
     }
 }
