@@ -7,7 +7,7 @@ package com.example.neilbryanlagrimas.guesswhat;
 public class Media {
 
 
-    Integer[] media_logo = {
+    public Integer[] media_logo = {
             R.drawable.android,
             R.drawable.facebook,
             R.drawable.instagram,
@@ -20,10 +20,18 @@ public class Media {
             R.drawable.tumblr,
             R.drawable.whatapp,
             R.drawable.pininterest,
+            R.drawable.googleplus,
+            R.drawable.linkedin,
+            R.drawable.vine,
+            R.drawable.skype,
+            R.drawable.wechat,
+            R.drawable.devianart,
+            R.drawable.googleplay,
+            R.drawable.viber,
     };
 
 
-    String [] medias = {
+    public String [] medias = {
             "android",
             "facebook",
             "instagram",
@@ -36,6 +44,14 @@ public class Media {
             "tumblr",
             "whatapp",
             "pininterest",
+            "googleplus",
+            "linkedin",
+            "vine",
+            "skype",
+            "wechat",
+            "devianart",
+            "googleplay",
+            "viber",
     };
 
 
